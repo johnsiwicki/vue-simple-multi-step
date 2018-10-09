@@ -30,21 +30,21 @@
         <div class="step" v-show="step === 2" :class="{ 'active': step === 2 }">
          
           <button @click.prevent="prev()" class="prev">Previous</button>
-          <button @click.prevent="next()" class="next" :disabled='errors.any() || !isCompleteAddress'>Next</button>
+          <button @click.prevent="next()" class="next">Next</button>
         </div>
       </transition>
         <transition name="slide-fade" :duration="{ enter: 500  }">
           <div class="step" v-show="step === 3" :class="{ 'active': step === 3 }">
             
             <button @click.prevent="prev()" class="prev">Previous</button>
-            <button @click.prevent="next()" class="next" :disabled='errors.any()'>Next</button>
+            <button @click.prevent="next()" class="next">Next</button>
           </div>
         </transition>
         <transition name="slide-fade" :duration="{ enter: 500  }">
           <div class="step" v-show="step === 4" :class="{ 'active': step === 4 }">
            
             <button @click.prevent="prev()" class="prev">Previous</button>
-            <button :disabled='errors.any() || !isDetailsComplete' @click.prevent="next()" class="next">Next</button>
+            <button>Next</button>
           </div>
         </transition>
         <transition name="slide-fade" :duration="{ enter: 500  }">
@@ -96,7 +96,7 @@ Vue.config.devtools = true
           this.step++;
           this.active++;
       },
-      
+
       submit() {
              this.$refs.aform.submit();
  
