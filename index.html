@@ -1,0 +1,113 @@
+<div id="form-app" class="container">
+  <div class="row">
+    <div class="small-12 large-6  small-centered columns">
+      <h1>
+          Testing
+      </h1>
+
+ 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12  small-centered columns">
+      <form id="appointment-form" ref="aform" action="/confirm.html" method="POST">
+ 
+        <div class="step"  ref="step1" v-show="step === 1" :class="{ 'active': step === 1 }">
+          <div class="title">
+            <h3>Zip Code</h3>
+          </div>
+          <div class="form_fields">
+            <label for="Field1">Field 1</label>
+            <input v-model="store.Field1" id="Field1" class="Field1 input" type="text" name="Field1"  
+    
+          </div>
+
+          <button @click.prevent="next()" class="next">Next</button>
+        </div>
+
+     <transition name="slide-fade" :duration="{ enter: 500  }">
+        <div class="step" v-show="step === 2" :class="{ 'active': step === 2 }">
+         
+          <button @click.prevent="prev()" class="prev">Previous</button>
+          <button @click.prevent="next()" class="next" :disabled='errors.any() || !isCompleteAddress'>Next</button>
+        </div>
+      </transition>
+        <transition name="slide-fade" :duration="{ enter: 500  }">
+          <div class="step" v-show="step === 3" :class="{ 'active': step === 3 }">
+            
+            <button @click.prevent="prev()" class="prev">Previous</button>
+            <button @click.prevent="next()" class="next" :disabled='errors.any()'>Next</button>
+          </div>
+        </transition>
+        <transition name="slide-fade" :duration="{ enter: 500  }">
+          <div class="step" v-show="step === 4" :class="{ 'active': step === 4 }">
+           
+            <button @click.prevent="prev()" class="prev">Previous</button>
+            <button :disabled='errors.any() || !isDetailsComplete' @click.prevent="next()" class="next">Next</button>
+          </div>
+        </transition>
+        <transition name="slide-fade" :duration="{ enter: 500  }">
+          <div class="step" v-show="step === 5" :class="{ 'active': step === 5 }">
+              <button @click.prevent="prev()" class="prev">Previous</button>
+              <button @click.prevent="next()" class="next">Next</button>
+          </div>
+        </transition>
+ 
+        <transition name="slide-fade" :duration="{ enter: 500  }">
+          <div class="step last-step" v-show="step === 6" :class="{ 'active': step === 6 }">
+            
+            <button @click.prevent="prev()" class="prev">Previous</button>
+            <button @click.prevent="submit()">Submit</button>
+          </div>
+        </transition>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.js'></script>
+<script>
+Vue.config.devtools = true
+  var theVue = new Vue({
+    el: '#form-app',
+    data() {
+      return {
+        input: 0,
+        store: {
+          Field1: null,
+        }
+      }
+    },
+    computed: {
+        
+    },
+    methods: {
+ 
+      prev() {
+        this.step--;
+        this.active--;
+      },
+      next() {
+          this.step++;
+          this.active++;
+      },
+      
+      submit() {
+             this.$refs.aform.submit();
+ 
+      }
+     
+    }
+
+  });
+
+</script>
+
+
+
+ 
